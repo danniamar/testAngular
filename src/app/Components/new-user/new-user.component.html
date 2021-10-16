@@ -1,0 +1,47 @@
+<div class="main-content" style="background-color: #424242; margin: 5%;" >
+    <div class="container-fluid">
+        <div class="row">
+            <div class="">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title title " >Crear Usuario</h4>
+                    </div>
+                    <div class="card-body">
+
+                        <form [formGroup]= "newUserForm">                           
+                            <mat-form-field appearance="fill" class="input field">
+                                <mat-label>Names</mat-label>
+                                <input matInput [type]="text" formControlName="name" [ngClass] = "{ 'is-invalid': submitted && f.name.errors}" required>
+                            </mat-form-field>
+                            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                <div *ngIf="f.name.errors.required"> This field is required</div></div>
+                            
+                                <mat-form-field appearance="fill" class="input field">
+                                    <mat-label>Job</mat-label>
+                                    <input matInput [type]="text" formControlName="job" [ngClass] = "{ 'is-invalid': submitted && f.job.errors}" required>
+                                </mat-form-field>
+                                <div *ngIf="submitted && f.job.errors" class="invalid-feedback">
+                                    <div *ngIf="f.job.errors.required"> This field is required</div></div>
+
+                              <mat-form-field appearance="fill" class="input field">
+                                <mat-label>Email</mat-label>
+                                <input email="true" matInput [type]="text" formControlName="email" [ngClass] = "{ 'is-invalid': submitted && f.email.errors}" required> 
+                            </mat-form-field>
+
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required"> This field is required</div>
+                                <div *ngIf="f.email.errors"> Enter a valid email</div> </div>
+                        </form>
+                        
+
+                          <div >
+                            <button mat-button color="primary" class="btn btn-info" (click)="createUser()">Guardar</button>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <app-user-list [newUser]="newUser" [newIdUser]="newIdUser"></app-user-list>
